@@ -5,10 +5,12 @@ import type { useFreighter } from '../hooks/useFreighter'
 type Props = { page: Page; setPage: (p: Page) => void; freighter: ReturnType<typeof useFreighter> }
 
 const LINKS: { id: Page; label: string }[] = [
+  { id: 'home',       label: 'Home' },
   { id: 'dashboard',  label: 'Overview' },
   { id: 'join',       label: 'Join Pool' },
   { id: 'claims',     label: 'Claims' },
   { id: 'governance', label: 'Governance' },
+  { id: 'about',      label: 'About' },
 ]
 
 function HamburgerIcon({ open }: { open: boolean }) {
@@ -40,29 +42,46 @@ export function Nav({ page, setPage, freighter }: Props) {
     setMobileOpen(false)
   }
 
+  const appLinks = LINKS.filter(l => l.id !== 'home' && l.id !== 'about')
+  const siteLinks = LINKS.filter(l => l.id === 'home' || l.id === 'about')
+
   return (
     <>
-      {/* Wallet dropdown backdrop */}
       {walletOpen && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 90 }} onClick={() => setWalletOpen(false)} />
       )}
 
       <header style={{ background: '#fff', borderBottom: '1px solid #e7e5e4', position: 'sticky', top: 0, zIndex: 100 }}>
-        <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 1.25rem', height: 58, display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 1.25rem', height: 60, display: 'flex', alignItems: 'center', gap: '1rem' }}>
 
           {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '.5rem', fontWeight: 700, fontSize: '1rem', flexShrink: 0 }}>
-            <div style={{ width: 30, height: 30, background: '#f97316', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '.9rem' }}>🏥</div>
+          <button
+            onClick={() => navigate('home')}
+            style={{ display: 'flex', alignItems: 'center', gap: '.5rem', fontWeight: 800, fontSize: '1.05rem', flexShrink: 0, background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', color: '#1c1917', padding: 0 }}
+          >
+            <div style={{ width: 32, height: 32, background: '#f97316', borderRadius: 9, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '.9rem' }}>🏥</div>
             StellarCare
-          </div>
+          </button>
 
           {/* Desktop nav links */}
-          <nav className="nav-desktop-links" style={{ display: 'flex', gap: '.15rem', flex: 1 }}>
-            {LINKS.map(l => (
+          <nav className="nav-desktop-links" style={{ display: 'flex', gap: '.1rem', flex: 1 }}>
+            {/* Divider after logo */}
+            <div style={{ width: 1, height: 18, background: '#e7e5e4', margin: '0 .5rem' }} />
+            {siteLinks.map(l => (
               <button key={l.id} onClick={() => navigate(l.id)} style={{
                 padding: '.4rem .875rem', borderRadius: 8, border: 'none',
                 background: page === l.id ? '#fff7ed' : 'transparent',
                 color: page === l.id ? '#ea580c' : '#78716c',
+                fontWeight: page === l.id ? 600 : 500,
+                fontSize: '.875rem', cursor: 'pointer', fontFamily: 'inherit', transition: 'all .15s',
+              }}>{l.label}</button>
+            ))}
+            <div style={{ width: 1, height: 18, background: '#e7e5e4', margin: '0 .5rem' }} />
+            {appLinks.map(l => (
+              <button key={l.id} onClick={() => navigate(l.id)} style={{
+                padding: '.4rem .875rem', borderRadius: 8, border: 'none',
+                background: page === l.id ? '#fff7ed' : 'transparent',
+                color: page === l.id ? '#ea580c' : '#44403c',
                 fontWeight: page === l.id ? 600 : 500,
                 fontSize: '.875rem', cursor: 'pointer', fontFamily: 'inherit', transition: 'all .15s',
               }}>{l.label}</button>
@@ -106,7 +125,14 @@ export function Nav({ page, setPage, freighter }: Props) {
 
       {/* Mobile drawer */}
       <div className={`nav-mobile-drawer ${mobileOpen ? 'open' : ''}`}>
-        {LINKS.map(l => (
+        <div style={{ fontSize: '.7rem', fontWeight: 700, color: '#a8a29e', letterSpacing: '.06em', textTransform: 'uppercase', padding: '.25rem 1rem .5rem' }}>Pages</div>
+        {siteLinks.map(l => (
+          <button key={l.id} className={`nav-mobile-link ${page === l.id ? 'on' : ''}`} onClick={() => navigate(l.id)}>
+            {l.label}
+          </button>
+        ))}
+        <div style={{ fontSize: '.7rem', fontWeight: 700, color: '#a8a29e', letterSpacing: '.06em', textTransform: 'uppercase', padding: '.75rem 1rem .5rem' }}>App</div>
+        {appLinks.map(l => (
           <button key={l.id} className={`nav-mobile-link ${page === l.id ? 'on' : ''}`} onClick={() => navigate(l.id)}>
             {l.label}
           </button>
@@ -120,7 +146,7 @@ export function Nav({ page, setPage, freighter }: Props) {
   )
 }
 
-// ── Wallet widget (shared desktop + mobile) ───────────────────────────────────
+// ── Wallet widget ─────────────────────────────────────────────────────────────
 
 type WalletProps = {
   wallet: ReturnType<typeof useFreighter>['wallet']
@@ -156,7 +182,6 @@ function WalletWidget({ wallet, connect, disconnect, short, open, setOpen, mobil
       </button>
     )
   }
-  // connected
   return (
     <div style={{ position: 'relative' }}>
       <button onClick={() => setOpen(o => !o)} style={{
