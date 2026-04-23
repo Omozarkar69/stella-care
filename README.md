@@ -3,6 +3,26 @@
 A decentralized community health insurance pool built on Stellar / Soroban.  
 Members contribute monthly, submit healthcare claims, vote on approvals, and govern pool parameters — all on-chain.
 
+🌐 **Live at → [stella-care.vercel.app](https://stella-care.vercel.app)**
+
+---
+
+## 📸 Screenshots
+
+> _Add screenshots here by dropping images into the `docs/screenshots/` folder and updating the paths below._
+
+| Landing Page | Dashboard |
+|---|---|
+| ![Landing](docs/screenshots/landing.png) | ![Dashboard](docs/screenshots/dashboard.png) |
+
+| Join Pool | Claims |
+|---|---|
+| ![Join Pool](docs/screenshots/join-pool.png) | ![Claims](docs/screenshots/claims.png) |
+
+| Governance | About Us |
+|---|---|
+| ![Governance](docs/screenshots/governance.png) | ![About](docs/screenshots/about.png) |
+
 ---
 
 ## 🟢 Green Belt — Level 4 Submission
@@ -17,6 +37,7 @@ Members contribute monthly, submit healthcare claims, vote on approvals, and gov
 | Mobile responsive UI | ✅ |
 | CI/CD pipeline (GitHub Actions) | ✅ |
 | Deployed on Stellar Testnet | ✅ |
+| Production frontend deployed (Vercel) | ✅ |
 
 ---
 
@@ -92,6 +113,25 @@ cargo test --workspace
 
 ---
 
+## 🚢 Deployment
+
+The frontend is deployed to Vercel and auto-builds on every push to `main`.
+
+| | |
+|---|---|
+| Production URL | https://stella-care.vercel.app |
+| Platform | Vercel |
+| Build command | `cd frontend && npm install && npm run build` |
+| Output directory | `frontend/dist` |
+
+To deploy manually:
+
+```bash
+vercel deploy --prod
+```
+
+---
+
 ## 🔁 CI/CD
 
 GitHub Actions runs on every push to `main`:
@@ -105,6 +145,8 @@ See [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
 ## 📱 Features
 
+- **Landing Page** — marketing homepage with hero, features, how-it-works, FAQ, and CTA
+- **About Us** — team, mission, values, and tech stack
 - **Join Pool** — pay 100 XLM/month, receive 500 HC + 100 CARE tokens on-chain
 - **Monthly Contribution** — renew coverage, earn more HC and CARE
 - **Submit Claims** — 6 claim types (hospital, surgery, dental, pharmacy, checkup, other)
