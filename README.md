@@ -13,15 +13,21 @@ Members contribute monthly, submit healthcare claims, vote on approvals, and gov
 
 | Landing Page | Dashboard |
 |---|---|
-| ![Landing](docs/screenshots/landing.png) | ![Dashboard](docs/screenshots/dashboard.png) |
+| ![Landing](<img width="1276" height="858" alt="Screenshot 2026-04-23 at 10 20 36 PM" src="https://github.com/user-attachments/assets/331e36ec-21d6-42ce-8467-fe72105ca694" />
+) | ![Dashboard](<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 10 PM" src="https://github.com/user-attachments/assets/50895b52-4e0a-418f-b258-b518ab1dc6a0" />
+) |
 
 | Join Pool | Claims |
 |---|---|
-| ![Join Pool](docs/screenshots/join-pool.png) | ![Claims](docs/screenshots/claims.png) |
+| ![Join Pool](<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 20 PM" src="https://github.com/user-attachments/assets/18556e78-695b-461e-9bbb-128689e4d523" />
+) | ![Claims](<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 26 PM" src="https://github.com/user-attachments/assets/fd4023b7-48af-4b62-809c-494e89fb10bc" />
+) |
 
 | Governance | About Us |
 |---|---|
-| ![Governance](docs/screenshots/governance.png) | ![About](docs/screenshots/about.png) |
+| ![Governance](<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 36 PM" src="https://github.com/user-attachments/assets/edd5cd77-ded9-460d-86fe-e11fda542e19" />
+) | ![About](<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 43 PM" src="https://github.com/user-attachments/assets/aca3c9a5-5f14-46bc-b4cf-1586ed261dd3" />
+) |
 
 ---
 
