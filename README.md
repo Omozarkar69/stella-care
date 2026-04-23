@@ -9,25 +9,12 @@ Members contribute monthly, submit healthcare claims, vote on approvals, and gov
 
 ## 📸 Screenshots
 
-> _Add screenshots here by dropping images into the `docs/screenshots/` folder and updating the paths below._
-
-| Landing Page | Dashboard |
-|---|---|
-| ![Landing](<img width="1276" height="858" alt="Screenshot 2026-04-23 at 10 20 36 PM" src="https://github.com/user-attachments/assets/331e36ec-21d6-42ce-8467-fe72105ca694" />
-) | ![Dashboard](<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 10 PM" src="https://github.com/user-attachments/assets/50895b52-4e0a-418f-b258-b518ab1dc6a0" />
-) |
-
-| Join Pool | Claims |
-|---|---|
-| ![Join Pool](<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 20 PM" src="https://github.com/user-attachments/assets/18556e78-695b-461e-9bbb-128689e4d523" />
-) | ![Claims](<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 26 PM" src="https://github.com/user-attachments/assets/fd4023b7-48af-4b62-809c-494e89fb10bc" />
-) |
-
-| Governance | About Us |
-|---|---|
-| ![Governance](<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 36 PM" src="https://github.com/user-attachments/assets/edd5cd77-ded9-460d-86fe-e11fda542e19" />
-) | ![About](<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 43 PM" src="https://github.com/user-attachments/assets/aca3c9a5-5f14-46bc-b4cf-1586ed261dd3" />
-) |
+<img width="1276" height="858" alt="Screenshot 2026-04-23 at 10 20 36 PM" src="https://github.com/user-attachments/assets/48baa099-cbb5-41fe-8611-2b2f398f32ea" />
+<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 10 PM" src="https://github.com/user-attachments/assets/8e23d2a4-ff7f-4bc0-857d-aedaeea424d8" />
+<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 20 PM" src="https://github.com/user-attachments/assets/e3d7d6ad-fd8d-4f4c-9afc-fb36ad474fbd" />
+<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 26 PM" src="https://github.com/user-attachments/assets/7c205081-9863-41b1-b84e-f01f1bf096e0" />
+<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 36 PM" src="https://github.com/user-attachments/assets/f79f189a-eced-4a8f-9ff8-f12d05cb1289" />
+<img width="1470" height="956" alt="Screenshot 2026-04-23 at 10 21 43 PM" src="https://github.com/user-attachments/assets/a817ae1e-1aa3-494d-81c5-000450a0fe32" />
 
 ---
 
