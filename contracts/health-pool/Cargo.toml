@@ -1,0 +1,22 @@
+[package]
+name = "health-pool"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+testutils = ["soroban-sdk/testutils"]
+
+[dependencies]
+soroban-sdk      = { workspace = true }
+care-token       = { path = "../care-token" }
+health-credit    = { path = "../health-credit" }
+claims-validator = { path = "../claims-validator" }
+
+[dev-dependencies]
+soroban-sdk      = { version = "25", features = ["testutils"] }
+care-token       = { path = "../care-token",       features = ["testutils"] }
+health-credit    = { path = "../health-credit",    features = ["testutils"] }
+claims-validator = { path = "../claims-validator", features = ["testutils"] }
