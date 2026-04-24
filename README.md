@@ -157,3 +157,14 @@ See [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 | Network | Stellar Testnet |
 | RPC | https://soroban-testnet.stellar.org |
 | Horizon | https://horizon-testnet.stellar.org |
+
+---
+
+## 📋 User Feedback — Review & Fixes
+
+| # | User Feedback | What Was Fixed | Commit |
+|---|---|---|---|
+| 1 | There should be a list of all available claims so it is easier to navigate | Replaced the manual "look up by ID" flow with a full **All Claims** list that loads every on-chain claim, shows status badges, and lets you expand any claim to vote — no ID guessing needed | [`4f7cd74`](https://github.com/Omozarkar69/stella-care/commit/4f7cd74) |
+| 2 | Create proposal was not working for a few moments | The root cause was missing auth entries in the transaction — fixed by switching to `StellarRpc.assembleTransaction()` which correctly attaches simulation auth entries so `require_auth()` passes on-chain | [`f142194`](https://github.com/Omozarkar69/stella-care/commit/f142194) |
+| 3 | I want to see all voting proposals in one place so it is easier to navigate | Added an **All Proposals** list tab that loads every on-chain proposal, shows Active/Executed badges, vote counts with a progress bar, and inline Vote For / Vote Against / Execute buttons | [`4f7cd74`](https://github.com/Omozarkar69/stella-care/commit/4f7cd74) |
+| 4 | Show me the proposal number so I can tell people which proposal is mine | After creating a proposal the assigned number is now displayed in a large prominent card with a **Copy #** button so you can share it instantly | [`4f7cd74`](https://github.com/Omozarkar69/stella-care/commit/4f7cd74) |
