@@ -6,7 +6,8 @@ Members contribute monthly, submit healthcare claims, vote on approvals, and gov
 🌐 **Live at → [stella-care.vercel.app](https://stella-care.vercel.app)**
 
 ---
-
+demo video link 
+https://drive.google.com/file/d/1kFkeHrhw1iNsUqzkiHuqG4fwS85DMokJ/view?usp=sharing
 ## 📸 Screenshots
 
 <img width="1276" height="858" alt="Screenshot 2026-04-23 at 10 20 36 PM" src="https://github.com/user-attachments/assets/48baa099-cbb5-41fe-8611-2b2f398f32ea" />
