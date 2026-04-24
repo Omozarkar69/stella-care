@@ -162,6 +162,9 @@ See [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
 ## 📋 User Feedback — Review & Fixes
 
+📊 **Full feedback responses → [Google Sheets](https://docs.google.com/spreadsheets/d/1YuIGhBJlFtCOjqTEVFWmc0lAIWWBMiDigky0BGP3zHY/edit?usp=sharing)**
+
+
 | # | User Feedback | What Was Fixed | Commit |
 |---|---|---|---|
 | 1 | There should be a list of all available claims so it is easier to navigate | Replaced the manual "look up by ID" flow with a full **All Claims** list that loads every on-chain claim, shows status badges, and lets you expand any claim to vote — no ID guessing needed | [`4f7cd74`](https://github.com/Omozarkar69/stella-care/commit/4f7cd74) |
