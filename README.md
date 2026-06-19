@@ -8,7 +8,6 @@ Members contribute monthly, submit healthcare claims, vote on approvals, and gov
 ---
 
 > [!IMPORTANT]
-> ### 🚀 HACKATHON FEATURE HIGHLIGHTS
 > We have added the following new features and enhancements:
 > 
 > *   **All-in-One Claims List View:** Replaced the manual ID lookup flow with a dynamic panel that displays all on-chain healthcare claims, complete with status indicators and quick-voting actions.
