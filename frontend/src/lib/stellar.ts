@@ -40,7 +40,6 @@ const CONTRACT_ERRORS: Record<number, string> = {
  */
 function friendlyError(raw: string): string {
   if (!raw) return 'Unknown error.'
-  console.log('[stellar] raw error:', raw)
 
   // ── Simulation error string (most common path) ────────────────────────────
   // Soroban RPC returns: "HostError: Error(Contract, #N)"
@@ -57,35 +56,19 @@ function friendlyError(raw: string): string {
       // getTransaction returns resultXdr as a TransactionResult (not Pair)
       const result = xdr.TransactionResult.fromXDR(raw, 'base64')
       const txResult = result.result()
-      // txResult is a TransactionResultResult union; on failure it has results()
       const opResults = (txResult as any).results?.()
       if (opResults?.length) {
         const opInner = opResults[0]
-        // opInner.tr() gives OperationResult.Tr union
         const tr = (opInner as any).tr?.()
-        // tr.invokeHostFunctionResult() gives InvokeHostFunctionResult
         const ihfr = (tr as any).invokeHostFunctionResult?.()
         if (ihfr) {
           const arm = ihfr.switch?.()
-          // InvokeHostFunctionResultCode: success=0, malformed=-1, trapped=-2
           if (arm?.value === 0) return 'Transaction succeeded.'
           if (arm?.value === -1) return 'Malformed transaction.'
-          if (arm?.value === -2) {
-            // The trap value is an ScError — decode it
-            // Try to get the contract error code from the ScError
-            try {
-              const trapVal = ihfr.value?.() // ScVal or similar
-              if (trapVal) {
-                const native = scValToNative(trapVal)
-                console.log('[stellar] trap native:', native)
-              }
-            } catch { /* ignore */ }
-            return 'Transaction was rejected by the contract.'
-          }
+          if (arm?.value === -2) return 'Transaction was rejected by the contract.'
         }
       }
-    } catch (e) {
-      console.log('[stellar] XDR parse failed:', e)
+    } catch {
       // not valid TransactionResult XDR, try TransactionResultPair
       try {
         const pair = xdr.TransactionResultPair.fromXDR(raw, 'base64')
@@ -176,7 +159,6 @@ export async function invoke(contractId: string, fn: string, args: xdr.ScVal[], 
   // 3. Simulate
   const server = new StellarRpc.Server(RPC)
   const simResult = await server.simulateTransaction(tx)
-  console.log('[stellar] sim response:', JSON.stringify({ error: (simResult as any).error, hasData: !!(simResult as any).transactionData }))
 
   if (StellarRpc.Api.isSimulationError(simResult)) {
     throw new Error(friendlyError((simResult as StellarRpc.Api.SimulateTransactionErrorResponse).error))
@@ -225,7 +207,6 @@ export async function invoke(contractId: string, fn: string, args: xdr.ScVal[], 
       return poll.returnValue ? scValToNative(xdr.ScVal.fromXDR(poll.returnValue, 'base64')) : null
     }
     if (poll.status === 'FAILED') {
-      console.log('[stellar] poll FAILED resultXdr:', poll.resultXdr)
       const msg = poll.resultXdr ? friendlyError(poll.resultXdr) : 'Transaction failed on-chain.'
       throw new Error(msg)
     }

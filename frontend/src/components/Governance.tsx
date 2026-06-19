@@ -5,24 +5,6 @@ type Props = { addr: string | null }
 
 type ProposalRow = { id: number; data: Record<string, unknown> }
 
-// helper — read proposal count from chain
-async function getProposalCount(addr: string): Promise<number> {
-  try {
-    // PropCount is stored as instance storage key in health-pool
-    // We probe by trying proposals 1..N until we get null
-    // Use the simulate helper with 'get_proposal' and count up
-    let n = 0
-    for (let i = 1; i <= 100; i++) {
-      const p = await getProposal(addr, BigInt(i))
-      if (!p) break
-      n = i
-    }
-    return n
-  } catch {
-    return 0
-  }
-}
-
 export function Governance({ addr }: Props) {
   const [tab, setTab] = useState<'list' | 'create'>('list')
   const [memberStatus, setMemberStatus] = useState<boolean | null>(null)
@@ -57,11 +39,29 @@ export function Governance({ addr }: Props) {
     setListLoading(true); setListErr(''); setProposals([])
     try {
       const rows: ProposalRow[] = []
-      // probe proposals 1..N until we get null
-      for (let i = 1; i <= 200; i++) {
-        const p = await getProposal(addr, BigInt(i))
-        if (!p) break
-        rows.push({ id: i, data: p as Record<string, unknown> })
+      let i = 1
+      let done = false
+      while (!done) {
+        const batchIds = Array.from({ length: 10 }, (_, idx) => BigInt(i + idx))
+        const results = await Promise.all(
+          batchIds.map(async (id, idx) => {
+            try {
+              const p = await getProposal(addr, id)
+              return { id: i + idx, data: p }
+            } catch {
+              return { id: i + idx, data: null }
+            }
+          })
+        )
+        for (const res of results) {
+          if (!res.data) {
+            done = true
+            break
+          }
+          rows.push({ id: res.id, data: res.data as Record<string, unknown> })
+        }
+        i += 10
+        if (i > 200) break
       }
       setProposals(rows)
     } catch (e: unknown) {
