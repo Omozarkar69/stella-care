@@ -3,7 +3,19 @@
 A decentralized community health insurance pool built on Stellar / Soroban.  
 Members contribute monthly, submit healthcare claims, vote on approvals, and govern pool parameters — all on-chain.
 
-🌐 **Live at → [stella-care.vercel.app](https://stella-care.vercel.app)**
+🌐 **Live at → [stella-care-nine.vercel.app](https://stella-care-nine.vercel.app)**
+
+---
+
+> [!IMPORTANT]
+> ### 🚀 HACKATHON FEATURE HIGHLIGHTS
+> We have added the following new features and enhancements:
+> 
+> *   **All-in-One Claims List View:** Replaced the manual ID lookup flow with a dynamic panel that displays all on-chain healthcare claims, complete with status indicators and quick-voting actions.
+> *   **All Proposals Governance Tab:** Added a dashboard view showing all active and executed on-chain governance proposals, detailed vote statistics, progress bars, and inline voting/execution triggers.
+> *   **Prominent Proposal Creation Success Card:** Automatically displays your newly assigned proposal ID with a copy button right after on-chain creation.
+> *   **Parallel Batch Fetching Performance:** Optimized the Governance and Claims dashboards using parallel Promise batching (`Promise.all` in chunks of 10) to query the Stellar ledger asynchronously, reducing loading times significantly.
+> *   **Polished UX & Clean RPC Logs:** Styled the dashboard with modern Inter typography, improved responsive rendering, and resolved noisy console warnings.
 
 ---
 demo video link 
